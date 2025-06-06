@@ -1,4 +1,3 @@
-// src/components/ConsultarAlunos.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   AppBar,
@@ -602,32 +601,31 @@ const ConsultarAlunos = () => {
                     <ButtonBase
                       onClick={() => {
                         // se aluno estiver desligado, não navegamos para detalhes
-                        if (!estaDesligado(aluno)) {
+                        
                           navigate(`/aluno/${aluno.id}`);
-                        }
+                        
                       }}
                       sx={{ display: 'block', width: '100%', textAlign: 'left', mb: 2 }}
                     >
                       <Card
                         sx={{
-                          transition: 'all 0.3s ease',
-                          cursor: estaDesligado(aluno) ? 'default' : 'pointer',
-                          borderRadius: 3,
-                          background: aluno.faltasNaSemana >= 3 
-                            ? 'linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%)' 
-                            : 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-                          border: aluno.faltasNaSemana >= 3 ? '2px solid #FFD700' : '1px solid #e0e0e0',
-                          opacity: estaDesligado(aluno) ? 0.6 : 1,
-                          '&:hover': estaDesligado(aluno)
-                            ? {}
-                            : {
-                                transform: 'translateY(-4px)',
-                                boxShadow: '0 8px 25px rgba(0, 36, 156, 0.15)',
-                                background: aluno.faltasNaSemana >= 3 
-                                  ? 'linear-gradient(135deg, #FFF5B0 0%, #FFE55C 100%)' 
-                                  : 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
-                              }
-                        }}
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  borderRadius: 3,
+  background: aluno.faltasNaSemana >= 3 
+    ? 'linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%)' 
+    : 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+  border: aluno.faltasNaSemana >= 3 ? '2px solid #FFD700' : '1px solid #e0e0e0',
+  opacity: estaDesligado(aluno) ? 0.6 : 1,
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 8px 25px rgba(0, 36, 156, 0.15)',
+    background: aluno.faltasNaSemana >= 3 
+      ? 'linear-gradient(135deg, #FFF5B0 0%, #FFE55C 100%)' 
+      : 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
+  }
+}}
+
                         elevation={2}
                       >
                         <CardContent sx={{ p: 3 }}>
